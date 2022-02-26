@@ -1,0 +1,4 @@
+image:
+  repository: vivekcs0114/pong
+  tag: latest
+  pullPolicy: IfNotPresent

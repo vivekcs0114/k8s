@@ -1,0 +1,6 @@
+# Default value for the pong
+
+image:
+  repository: pong
+  tag: latest
+  pullPolicy: IfNotPresent

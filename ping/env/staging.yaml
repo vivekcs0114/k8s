@@ -1,0 +1,4 @@
+image:
+  repository: vivekcs0114/ping
+  tag: latest
+  pullPolicy: IfNotPresent

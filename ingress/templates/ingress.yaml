@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "ingress.name" . }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  defaultBackend:
+    service:
+      name: ping-service
+      port:
+        number: 80
+  rules:
+    - host: k8s-app.test
+      http:
+        paths:
+          - path: /ping/
+            pathType: Prefix
+            backend:
+              service:
+                name: ping-service
+                port:
+                  number: 80
+          - path: /pong/
+            pathType: Prefix
+            backend:
+              service:
+                name: pong-service
+                port:
+                  number: 80
