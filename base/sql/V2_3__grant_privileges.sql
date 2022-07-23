@@ -1,0 +1,1 @@
+GRANT ALL ON DATABASE adhira TO adhira

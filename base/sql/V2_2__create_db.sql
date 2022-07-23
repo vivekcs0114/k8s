@@ -1,0 +1,4 @@
+CREATE DATABASE adhira WITH
+    OWNER = adhira
+    ENCODING  = 'UTF8'
+    CONNECTION LIMIT = -1;

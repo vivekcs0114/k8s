@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migration-job
+  namespace: migration
+spec:
+  template:
+    spec:
+      containers:
+        - name: flyway
+          image: migration:v2.0
+          args:
+            - info
+            - repair
+            - migrate
+            - info
+          env:
+            - name: FLYWAY_URL
+              value: jdbc:postgresql://postgres:5432/postgres
+            - name: FLYWAY_USER
+              value: admin
+            - name: FLYWAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: password
+      restartPolicy: Never
