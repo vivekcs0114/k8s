@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgres
-  namespace: migration
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
 spec:
   serviceName: "postgres"
   replicas: 1
@@ -27,16 +27,3 @@ spec:
                   key: password
           ports:
             - containerPort: 5432
-          volumeMounts:
-            - name: postgredb
-              mountPath: /var/lib/postgresql/data
-              subPath: postgres
-  volumeClaimTemplates:
-    - metadata:
-        name: postgredb
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: fast
-        resources:
-          requests:
-            storage: 1Gi

@@ -1,0 +1,6 @@
+# Default value for the ping
+
+image:
+  repository: demo
+  tag: v1.6
+  pullPolicy: IfNotPresent
