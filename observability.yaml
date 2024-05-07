@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: es-secret
+type: Opaque
+data:
+  username: {{ "elastic" | b64enc | quote }}
+  password: {{ "LKW5420I2ei14pIz3m7dpx2E" | b64enc | quote }}
+
+---
+
+es:
+  enable: true
+  host: "quickstart-es-http.default.svc.cluster.local"
+  port: 9200
+  httpPassword:
+    valueFrom:
+      secretKeyRef:
+        key: password
+        name: es-secret
+  httpUser:
+    valueFrom:
+      secretKeyRef:
+        key: username
+        name: es-secret
+  index: dev
+  logstashPrefix: ks-logstash-log
+  bufferSize: 20MB
+  traceError: true
+  enableTLS: true
+  tls:
+    verify: Off
+  suppressTypeName: "On"
