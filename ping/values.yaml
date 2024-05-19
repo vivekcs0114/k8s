@@ -1,6 +1,6 @@
 # Default value for the ping
 
 image:
-  repository: ping
+  repository: vivekcs0114/ping
   tag: latest
   pullPolicy: IfNotPresent

@@ -1,6 +1,6 @@
 # Default value for the pong
 
 image:
-  repository: pong
+  repository: vivekcs0114/pong
   tag: latest
   pullPolicy: IfNotPresent
